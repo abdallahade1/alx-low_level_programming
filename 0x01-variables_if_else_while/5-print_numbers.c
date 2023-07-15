@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include<stdio.h>
 
 
 /**
@@ -20,5 +20,6 @@ int main(void)
 		digit++;
 	}
 	printf('\n');
+
 	return (0);
 }
