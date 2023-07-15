@@ -19,5 +19,5 @@ int main(void)
 		printf("%i", digit);
 		digit++;
 	}
-	putchar('\n');
+	printf('\n');
 	return (0);
