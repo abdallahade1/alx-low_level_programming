@@ -2,7 +2,6 @@
 
 /**
  * print_listint - prints all the element of the linked list
- *
  * @h: points at the linked list
  * Return: number of nodes
  */
@@ -17,5 +16,6 @@ size_t print_listint(const listint_t *h)
 		j++;
 		h = h->next;
 	}
+
 	return (j);
 }
