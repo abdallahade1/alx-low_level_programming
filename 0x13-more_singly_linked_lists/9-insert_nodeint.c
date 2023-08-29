@@ -8,34 +8,39 @@
  * @n: data to insert in the new node
  * Return: pointer to the new node
  */
+
+
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *node, *new_node = malloc(sizeof(listint_t));
-	unsigned int i = 0;
+	unsigned int i;
+	listint_t *nd;
+	listint_t *temp = *head;
 
-	if (!head || !new_node)
+	nd = malloc(sizeof(listint_t));
+	if (!nd || !head)
 		return (NULL);
 
-	new_node->n = n;
-	new_node->next = NULL;
+	nd->n = n;
+	nd->next = NULL;
+
 	if (idx == 0)
 	{
-		new_node->next = *head;
-		*head = new_node;
-		return (new_node);
+		nd->next = *head;
+		*head = nd;
+		return (nd);
 	}
-	node = *head;
-	while (node)
+
+	for (i = 0; temp && i < idx; i++)
 	{
 		if (i == idx - 1)
 		{
-			new_node->next = node->next;
-			node->next = new_node;
-			return (new_node);
+			nd->next = temp->next;
+			temp->next = nd;
+			return (nd);
 		}
-		i++;
-		node = node->next;
+		else
+			temp = temp->next;
 	}
-	free(new_node);
+
 	return (NULL);
 }
