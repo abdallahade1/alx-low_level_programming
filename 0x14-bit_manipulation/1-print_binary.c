@@ -3,6 +3,7 @@
 /**
  * print_binary - prints the binary equivalent of a decimal number
  * @n: number to print in binary
+ * Return: void
  */
 
 void print_binary(unsigned long int n)
@@ -17,7 +18,7 @@ void print_binary(unsigned long int n)
 			current++;
 		}
 		else if (current)
-			_putchar('0);
+			_putchar('0');
 	}
 	if (!current)
 		_putchar('0');
