@@ -8,31 +8,31 @@
 
 /**
  * main - program
- * @arg_c: argument count
- * @arg_v: argument vector
+ * @ac: argument count
+ * @av: argument vector
  * Return: 1 on success, 0 if it fails
  */
 
-int main(int arg_c, char **arg_v)
+int main(int ac, char **av)
 {
 	int from_fd = 0, to_fd = 0;
 	ssize_t b;
 	char buf[READ_BUF_SIZE];
 
-	if (arg_c != 3)
+	if (ac != 3)
 		dprintf(STDERR_FILENO, USAGE), exit(97);
-	from_fd = open(arg_v[1], O_RDONLY);
+	from_fd = open(av[1], O_RDONLY);
 	if (from_fd == -1)
-		dprintf(STDERR_FILENO, ERR_NOREAD, arg_v[1]), exit(98);
-	to_fd = open(arg_v[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
+		dprintf(STDERR_FILENO, ERR_NOREAD, av[1]), exit(98);
+	to_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
 	if (to_fd == -1)
-		dprintf(STDERR_FILENO, ERR_NOWRITE, arg_v[2]), exit(99);
+		dprintf(STDERR_FILENO, ERR_NOWRITE, av[2]), exit(99);
 
 	while ((b = read(from_fd, buf, READ_BUF_SIZE)) > 0)
 		if (write(to_fd, buf, b) != b)
-			dprintf(STDERR_FILENO, ERR_NOWRITE, arg_v[2]), exit(99);
+			dprintf(STDERR_FILENO, ERR_NOWRITE, av[2]), exit(99);
 	if (b == -1)
-		dprintf(STDERR_FILENO, ERR_NOREAD, arg_v[1]), exit(98);
+		dprintf(STDERR_FILENO, ERR_NOREAD, av[1]), exit(98);
 
 	from_fd = close(from_fd);
 	to_fd = close(to_fd);
