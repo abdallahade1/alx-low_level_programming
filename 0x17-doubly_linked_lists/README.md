@@ -1,1 +1,1 @@
-doubly linked list
+dlist
