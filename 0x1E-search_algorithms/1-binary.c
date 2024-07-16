@@ -15,6 +15,7 @@ int binary_search(int *array, size_t size, int value)
 
 	size_t i, start, end;
 
+
 	if(array == NULL)
 		return (-1);
 
@@ -34,10 +35,11 @@ int binary_search(int *array, size_t size, int value)
 		if (array[i] > value)
 			end = i - 1;
 
-		else 
+		else
 			start = i + 1;
 
 	}
+
 	return (-1);
 }
 
